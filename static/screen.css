@@ -1,41 +1,51 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,600italic);
-
 body {
     color: #222;
-    font: 15px/22px 'Open Sans',Arial,Helvetica,sans-serif;
+    font: 15px/22px 'Open Sans', Arial, Helvetica, sans-serif;
     background-color: #fdfdfd;
-    background: url(/static/pattern.png) repeat;
+    background:#eeeee;
     margin-bottom: 30px;
 }
-.row-fluid {
+
+.row {
     background-color: #fafafa;
     padding: 10px;
     border-radius: 5px;
 }
+
 h5 {
     font-size: 16px;
     font-weight: 300;
 }
-.navbar.main .navbar-inner {
+
+.navbar-toggle .icon-bar {
+    background: #337ab7;
+}
+
+.navbar.main {
     border: 0;
     border-bottom: 1px solid #d4d4d4;
     border-radius: 0;
+    background-color: #ffffff;
 }
+
 .brand i {
     color: white;
     text-shadow: 2px 2px 10px #317eac;
     margin-right: 5px;
     font-size: 20px;
 }
+
 .navbar-inner: {
-    background-color: #45aeea;
 }
+
 .sparkline {
     height: 42px;
     width: 100%;
     margin-top: -12px;
     display: block;
 }
+
 .sparkline svg {
     /*
     width: 50%;
@@ -43,44 +53,64 @@ h5 {
     */
     margin: 2%;
 }
+
 path {
     stroke: #333;
 }
+
 #temp {}
+
 .sparkline path {
     stroke-width: 1.2px;
     fill: none;
 }
+
 #sparkline path {
     stroke: #b5152b;
 }
-#windsparkline path  {
+
+#windsparkline path {
     stroke: #b5152b;
 }
-.pressure, #pressuresparkline path  {
+
+.pressure,
+#pressuresparkline path {
     stroke: #5c8843;
 }
-#graphtabs .intemp path.line, #graphtabs .outtemp path.line, #graphtabs .dewpoint path.line,#graphtabs .heatindex path.line,#graphtabs .windchill path.line  {
+
+#graphtabs .intemp path.line,
+#graphtabs .outtemp path.line,
+#graphtabs .dewpoint path.line,
+#graphtabs .heatindex path.line,
+#graphtabs .windchill path.line {
     stroke: #b5152b;
 }
-#graphtabs .outhumidity path.line, .inhumidity path.line  {
+
+#graphtabs .outhumidity path.line,
+.inhumidity path.line {
     stroke: #4d8fc8;
 }
-#graphtabs .windspeed path.line, .windgust path.line, #graphtabs .winddir path.line  {
+
+#graphtabs .windspeed path.line,
+.windgust path.line,
+#graphtabs .winddir path.line {
     stroke: #8c52e2;
 }
+
 #graphtabs .barometer path.line {
     stroke: #5c8843;
 }
 
-#current_weather.row-fluid {
+#current_weather.row {
     background: inherit;
     margin-bottom: 10px;
 }
+
 .trans {
     color: rgba(255, 255, 255, 0.8) !important;
 }
-#current_weather>div{
+
+#current_weather>div {
     /*
     background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
@@ -94,18 +124,22 @@ path {
     border-radius: 5px;
     text-align: center;
 }
+
 #current_weather .navbar .nav h5 {
     float: left;
 }
+
 #current_weather i {
     font-size: 24px;
 }
+
 #current_weather .navbar .left > li {
     padding-left: 9px;
     padding-right: 9px;
     border-right: 1px solid white;
     border-left: 1px solid #f2f2f2;
 }
+
 #current_weather .navbar .nav > li > span {
     float: none;
     padding: 10px 15px 10px;
@@ -114,32 +148,66 @@ path {
     text-decoration: none;
     text-shadow: 0 1px 0 #ffffff;
 }
-.yellow { color: #C98E0A; }
-.purple, .high { 
-    color: #8C52E2; 
+
+.yellow {
+    color: #C98E0A;
+}
+
+.purple,
+.high {
+    color: #8C52E2;
     stroke: #8c52e2;
 }
-.pink    { color: #C25090; }
-.purple2, .low, .min { 
+
+.pink {
+    color: #C25090;
+}
+
+.purple2,
+.low,
+.min {
     color: #7B6BB9;
     stroke: #7b6bb9;
 }
-.red, .avg, .temp, .wind { color: #b5152b; stroke: #b5152b; }
-.green, .pressure { 
+
+.red,
+.avg,
+.temp,
+.wind {
+    color: #b5152b;
+    stroke: #b5152b;
+}
+
+.green,
+.pressure {
     color: #5c8843;
     stroke: #5c8843;
 }
-h1, h2, h3, h4, h5, h6, .blue, .hum, .rain { color: #4d8fc8; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.blue,
+.hum,
+.rain {
+    color: #4d8fc8;
+}
 
 svg {
     font-size: 13px;
 }
+
 svg text {
     fill: #666;
 }
+
 svg text.score {
     fill: white;
 }
+
 .ruler {
     fill: black;
     stroke: none;
@@ -150,7 +218,7 @@ svg text.score {
 .axis line {
     fill: none;
     /* Dont Hide y axis line */
-     stroke: #d4d4d4;
+    stroke: #d4d4d4;
     shape-rendering: crispEdges;
 }
 
@@ -159,14 +227,15 @@ svg text.score {
 }
 
 .axis.hours text {
-  fill: #ccc;
-  font-size:2rem;
-  opacity: 0.8;
-  font-family: "FontAwesome";
+    fill: #ccc;
+    font-size: 2rem;
+    opacity: 0.8;
+    font-family: "FontAwesome";
 }
+
 .axis.hours path {
-  fill: none;
-  stroke: none;
+    fill: none;
+    stroke: none;
 }
 
 .bar {
@@ -176,6 +245,7 @@ svg text.score {
     stroke: white;
     */
 }
+
 .bar:hover {
     fill: #002147;
 }
@@ -184,23 +254,25 @@ svg text.score {
     fill: none;
     pointer-events: all;
 }
+
 svg:not(:hover) .focus {
-  display: none;
+    display: none;
 }
 
 .focus line {
-  stroke: red;
-  shape-rendering: crispEdges;
+    stroke: red;
+    shape-rendering: crispEdges;
 }
 
 .focus circle {
-  fill: #fff;
-  fill-opacity: .5;
-  stroke: red;
-  stroke-width: 1.5px;
+    fill: #fff;
+    fill-opacity: .5;
+    stroke: red;
+    stroke-width: 1.5px;
 }
 
-#tt, #tooltip {
+#tt,
+#tooltip {
     z-index: 1;
     display: none;
     overflow: none;
@@ -211,107 +283,146 @@ svg:not(:hover) .focus {
     transition: opacity 500ms linear;
     -moz-transition: opacity 500ms linear;
     -webkit-transition: opacity 500ms linear;
-
-    transition-delay: 500ms
-    -moz-transition-delay: 500ms;
+    transition-delay: 500ms -moz-transition-delay: 500ms;
     -webkit-transition-delay: 500ms;
-
-    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,.5);
-    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,.5);
-    box-shadow: 4px 4px 10px rgba(0,0,0,.5);
-
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, .5);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, .5);
     -moz-border-radius: 10px;
     border-radius: 10px;
-
 }
+
 #tt .value {
     font-weight: strong;
 }
+
 
 /**********
 *  Legend
 */
 
 .legend .series {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .legend circle {
-  stroke-width: 2px;
+    stroke-width: 2px;
 }
 
 .legend .disabled circle {
-  fill-opacity: 0;
+    fill-opacity: 0;
 }
+
+
 /**********
 *  Line chart
 */
 
 .point-paths path {
-  /*
+    /*
   fill: #eee;
   stroke: #aaa;
   */
-  stroke-opacity: 0;
-  fill-opacity: 0;
+    stroke-opacity: 0;
+    fill-opacity: 0;
 }
 
-
 .line path {
-  fill: none;
-  stroke-width: 2px;
-  stroke-linecap: round;
-
-  transition: stroke-width 250ms linear;
-  -moz-transition: stroke-width 250ms linear;
-  -webkit-transition: stroke-width 250ms linear;
-
-  transition-delay: 250ms
-  -moz-transition-delay: 250ms;
-  -webkit-transition-delay: 250ms;
+    fill: none;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    transition: stroke-width 250ms linear;
+    -moz-transition: stroke-width 250ms linear;
+    -webkit-transition: stroke-width 250ms linear;
+    transition-delay: 250ms -moz-transition-delay: 250ms;
+    -webkit-transition-delay: 250ms;
 }
 
 .line.hover path {
-  stroke-width: 6px;
-  stroke: #002147;
+    stroke-width: 6px;
+    stroke: #002147;
 }
 
 .line .point {
-  transition: stroke-width 250ms linear;
-  -moz-transition: stroke-width 250ms linear;
-  -webkit-transition: stroke-width 250ms linear;
+    transition: stroke-width 250ms linear;
+    -moz-transition: stroke-width 250ms linear;
+    -webkit-transition: stroke-width 250ms linear;
 }
 
 .line .point.hover {
-  stroke-width: 20px;
-  stroke-opacity: .5;
+    stroke-width: 20px;
+    stroke-opacity: .5;
 }
 
 .line {
     fill: none;
     stroke-width: 2px;
 }
+
 line.yLine {
     stroke: #dfdfdf;
     shape-rendering: crispEdges;
 }
+
+
 /* Windrose styles */
+
 .windroserow svg {
     margin: 0 auto;
     width: 400px;
     display: block;
 }
-svg text { font: 14px sans-serif; text-anchor: middle }
-svg .caption { font: 18px sans-serif; }
-svg .axes { stroke: #aaa; stroke-width: 0.5px; fill: none; }
-svg .labels text { letter-spacing: 1px; fill: #444; font-size: 12px; }
-svg .arcs {  stroke: #000; stroke-width: 0.5px; }
-svg .arctext text { font-size: 9px; }
-svg #windrose .arctext { fill: #44d; }
-svg #windspeed .arctext { fill: #933; }
-svg .calmwind text {  font-size: 18px; }
-svg text.calmcaption {  font-size: 12px; }
-svg g.tickmarks>text { font-size: 10px; fill: #888;}
+
+svg text {
+    font: 14px sans-serif;
+    text-anchor: middle
+}
+
+svg .caption {
+    font: 18px sans-serif;
+}
+
+svg .axes {
+    stroke: #aaa;
+    stroke-width: 0.5px;
+    fill: none;
+}
+
+svg .labels text {
+    letter-spacing: 1px;
+    fill: #444;
+    font-size: 12px;
+}
+
+svg .arcs {
+    stroke: #000;
+    stroke-width: 0.5px;
+}
+
+svg .arctext text {
+    font-size: 9px;
+}
+
+svg #windrose .arctext {
+    fill: #44d;
+}
+
+svg #windspeed .arctext {
+    fill: #933;
+}
+
+svg .calmwind text {
+    font-size: 18px;
+}
+
+svg text.calmcaption {
+    font-size: 12px;
+}
+
+svg g.tickmarks>text {
+    font-size: 10px;
+    fill: #888;
+}
 
 @media (max-width: 979px) {
     body {
@@ -324,6 +435,7 @@ svg g.tickmarks>text { font-size: 10px; fill: #888;}
         stroke-width: 1.5px;
     }
 }
+
 @media (min-width: 1200px) {
     /* Bigger stroke width for bigger screen */
     .line {
@@ -331,60 +443,58 @@ svg g.tickmarks>text { font-size: 10px; fill: #888;}
     }
 }
 
+
 /* Meteo icons */
+
 .icon-met {
     font-style: normal;
     font-family: 'MeteoconsRegular'
 }
+
 .icon-compass:before {
     content: "(";
 }
+
 .icon-temp:before {
     content: "'";
 }
+
 .icon-wind:before {
     content: "F";
 }
 
-
 .qi {
-	background-color: #999;
-	fill: #999;
-}
-.q1
-{
-	background-color: #c6dbef;
-	fill: #c6dbef;
-}
-.q2
-{
-	background-color: #9ecae1;
-	fill: #9ecae1;
+    background-color: #999;
+    fill: #999;
 }
 
-.q3
-{
-	background-color: #6baed6;
-	fill: #6baed6;
+.q1 {
+    background-color: #c6dbef;
+    fill: #c6dbef;
 }
 
-.q4
-{
-	background-color: #3182bd;
-	fill: #3182bd;
+.q2 {
+    background-color: #9ecae1;
+    fill: #9ecae1;
 }
 
-.q5
-{
-	background-color: #6b6ecf;
-	fill: #6b6ecf;
+.q3 {
+    background-color: #6baed6;
+    fill: #6baed6;
 }
 
-.q0
-{
-	background-color: #ededed;
-	fill: #ededed;
-	stroke: #ededed;
+.q4 {
+    background-color: #3182bd;
+    fill: #3182bd;
 }
 
+.q5 {
+    background-color: #6b6ecf;
+    fill: #6b6ecf;
+}
 
+.q0 {
+    background-color: #ededed;
+    fill: #ededed;
+    stroke: #ededed;
+}

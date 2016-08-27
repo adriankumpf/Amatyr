@@ -27,11 +27,5 @@
         "name": "Name",
         "url": "https://maps.google.com/maps?q=0%2C0&z=15"
     },
-    "webcam": {
-        "width": "1080",
-        "height": "720",
-        "url": "http://yr.no/snap.jpg"
-
-    },
     "firstyear": 2013
 }

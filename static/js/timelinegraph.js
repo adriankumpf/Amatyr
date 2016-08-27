@@ -3,7 +3,7 @@
  * Ref http://bost.ocks.org/mike/chart/
  */
 function timeSeriesChart() {
-  var margin = {top: 20, right: 20, bottom: 20, left: 30},
+  var margin = {top: 20, right: 20, bottom: 20, left: 50},
       width = 760,
       height = 120,
       xValue = function(d) { return d[0]; },
@@ -13,8 +13,8 @@ function timeSeriesChart() {
       yTicks = 6, // Todo make responsive
       interpolate = 'basis',
       xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickSize(6, 0),
-      yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(yTicks), 
-      line = d3.svg.line().x(X).y(Y).interpolate(interpolate);
+      yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(yTicks),
+      line = d3.svg.line().defined(function (d) { return d[1] }).x(X).y(Y).interpolate(interpolate);
       //area = d3.svg.area().x(X).y1(Y),
 
   function chart(selection) {
@@ -75,7 +75,7 @@ function timeSeriesChart() {
       // Update y Grid lines
       g.selectAll("g.y")
          .data(yScale.ticks(yTicks))
-           .enter().append("g") 
+           .enter().append("g")
            .attr("class", "y axis")
          .append("svg:line")
            .attr("class", "yLine")
@@ -95,7 +95,7 @@ function timeSeriesChart() {
             .attr("x2", xScale)
             .attr("y1", 0)
             .attr("y2", height)
-            .style('stroke', function(d, i) { 
+            .style('stroke', function(d, i) {
                 if(d.getHours() == 0) {
                     return '#ccc';
                 }
