@@ -1,1 +1,8 @@
 twitterconfig.json
+
+etc/config.json
+bootstrap/
+logs/
+static/fa/
+static/js/bootstrap*
+static/js/jquery*
