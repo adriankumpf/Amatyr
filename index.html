@@ -39,11 +39,11 @@
         <a class="navbar-brand" href="#">AmatYR</a>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class=""><a href="/">3 day</a></li>
-            <li class=""><a href="/day/today">Today</a></li>
-            <li class=""><a href="/day/yesterday">Yesterday</a></li>
-            <li class=""><a href="/hour/week">Week</a></li>
-            <li class=""><a href="/hour/month">Month</a></li>
+            <li class=""><a href="/">3 Tage</a></li>
+            <li class=""><a href="/day/today">Heute</a></li>
+            <li class=""><a href="/day/yesterday">Gestern</a></li>
+            <li class=""><a href="/hour/week">Woche</a></li>
+            <li class=""><a href="/hour/month">Monat</a></li>
             {% local currentyear = tonumber(string.sub(ngx.today(),1,4)) for i=currentyear,conf.firstyear,-1 do %}
             <li class=""><a href="/year/{{i}}">{{i}}</a></li>
             {% end %}
@@ -67,8 +67,10 @@
         <div class="col-md-12" id="main">
           <div class="svgholder" id="temp"><i class="fa fa-spin fa fa-spinner"></i>Loading data...</div>
           <h5>
-            Legend:
-            <span class="high">High</span>, <span class="avg">avg</span>, <span class="min">min</span> temperature. <span class="rain">Rain</span> in mm. <span class="pressure">Pressure</span>
+            Legende:
+            <span class="high">Höchst-</span>, <span class="avg">Durchschnitts-</span>, <span
+              class="min">Tiefst-</span>temperatur. <span class="rain">Regen</span> in mm. <span
+              class="pressure">Luftdruck</span>
           </h5>
         </div>
         <div class="row windroserow">
@@ -102,14 +104,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12" id="record_weather">
-          <h3>Records <small>Maximum and minimum values</small></h3>
+          <h3>Archiv <small>Maximal- und Minimalwerte</small></h3>
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_today" data-toggle="tab">Today</a></li>
-            <li class=""><a href="#tab_yesterday" data-toggle="tab">Yesterday</a></li>
-            <li class=""><a href="#tab_week" data-toggle="tab">Week</a></li>
-            <li class=""><a href="#tab_month" data-toggle="tab">Month</a></li>
-            <li class=""><a href="#r2013" data-toggle="tab">Year</a></li>
-            <li class=""><a href="#rall" data-toggle="tab">All</a></li>
+            <li class="active"><a href="#tab_today" data-toggle="tab">Heute</a></li>
+            <li class=""><a href="#tab_yesterday" data-toggle="tab">Gestern</a></li>
+            <li class=""><a href="#tab_week" data-toggle="tab">Woche</a></li>
+            <li class=""><a href="#tab_month" data-toggle="tab">Monat</a></li>
+            <li class=""><a href="#r2013" data-toggle="tab">Jahr</a></li>
+            <li class=""><a href="#rall" data-toggle="tab">Gesamt</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_today"></div>
@@ -127,7 +129,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12" id="cal-heatmap">
-          <h3>Rain calendar <small>Intensity by rain amount</small></h3>
+          <h3>Regenkalender <small></small></h3>
           <div class="spinner"><i class="fa fa-spinner fa fa-spin"></i> Loading calendar data... </div>
         </div>
       </div>
@@ -136,7 +138,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12" id="tabular">
-          <h3>Aggregated monthly data</a> <small></small> </h3>
+          <h3>Aggregierte Monatsdaten</a> <small></small> </h3>
         <div class="spinner"><i class="fa fa-spinner fa fa-spin"></i> Loading calendar data... </div>
         <div class="panel-group" id="accordion"></div>
       </div>
@@ -149,7 +151,6 @@
     <div class="row">
       <footer class="footer">
         <a class="brand" href="https://github.com/torhve/Amatyr"><i class="fa fa-cloud"></i> AmatYR</a> is a personal weather site. The source is free software written by
-        <span class="muted">&copy; 2013-2015</span> <a href="http://hveem.no/">Tor Hveem</a>
         <p class="pull-right">Find the source over at <a href="https://github.com/torhve/Amatyr">GitHub</a>.</p>
       </footer>
     </div>
@@ -158,44 +159,43 @@
     <table class="table table-condensed">
       <tr>
         <th>
-          Date
+          Datum
         </th>
         <th><i class="fa fa-clock-o"></i></th>
         <th data-text="d.datetime | date"></th>
       </tr>
       <tr class="avg">
-        <td>Temperature </td>
+        <td>Temperatur </td>
         <td><i class="icon-met icon-temp"></i></td>
         <td data-text="d.outtemp | temp"></td>
       </tr>
       <tr class="rain">
-        <td>Daily rain </td>
+        <td>Regen (heute) </td>
         <td><i class="fa fa-tint"></i></td>
         <td data-text="d.dayrain | rain"></td>
       </tr>
       <tr class="wind">
-        <td>Wind speed </td>
+        <td>Windgeschwindigkeit </td>
         <td><i class="icon-met icon-wind"></i></td>
         <td data-text="d.windspeed | wind"></td>
       </tr>
       <tr class="wind">
-        <td>Wind direction </td>
+        <td>Windrichtung </td>
         <td><i class="icon-met icon-compass"></i></td>
         <td data-text="d.winddir | degree"></td>
       </tr>
       <tr class="pressure">
-        <td>Pressure</td>
+        <td>Luftdruck</td>
         <td><i class="fa fa-signal"></i></td>
         <td data-text="d.barometer | pressure"></td>
       </tr>
       <tr class="hum">
-        <td>Humidity</td>
+        <td>Luftfeuchtigkeit</td>
         <td><i class="fa fa-dashboard"></i></td>
         <td data-text="d.outhumidity | percent"></td>
       </tr>
     </table>
   </div>
-
 
   <script id="record_table_template" type="text/html">
     <table class="table">
@@ -206,61 +206,61 @@
         <th>Age</th>
       </tr>
       <tr>
-        <td>Highest temperature</td>
+        <td>Höchstemperatur</td>
         <td data-text='current.maxouttempvalue | temp'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxouttempdate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxouttempage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Lowest temperature</td>
+        <td>Tiefsttemperature</td>
         <td data-text='current.minouttempvalue | temp'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.minouttempdate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.minouttempage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Lowest wind chill</td>
+        <td>Höchste Windkälte</td>
         <td data-text='current.minwindchillvalue | temp'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.minwindchilldate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.minwindchillage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Highest heat index</td>
+        <td>Höchster Hitzeindex</td>
         <td data-text='current.maxheatindexvalue | temp'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxheatindexdate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxheatindexage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Highest avg wind speed</td>
+        <td>Höchste Windgeschwindigkeit</td>
         <td data-text='current.maxwindspeedvalue | wind'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxwindspeeddate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxwindspeedage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Highest wind gust speed</td>
+        <td>Höchste Windböengesschwindigkeit</td>
         <td data-text='current.maxwindgustvalue | wind'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxwindgustdate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxwindgustage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Amount of rain in period</td>
+        <td>Regenmenge</td>
         <td data-text='current.sumrainvalue | rain'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.sumraindate'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.sumrainage'><i class="fa fa-spinner fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Highest daily rain</td>
+        <td>Höchste Regenmenge pro Tag</td>
         <td data-text='current.maxdayrainvalue | rain'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.maxdayraindate'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.maxdayrainage'><i class="fa fa-spinner fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Highest pressure</td>
+        <td>Höchtser Luftdruck</td>
         <td data-text='current.maxbarometervalue | pressure'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.maxbarometerdate'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.maxbarometerage'><i class="fa fa-spinner fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Lowest pressure</td>
+        <td>Niedrigster Luftdruck</td>
         <td data-text='current.minbarometervalue | pressure'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.minbarometerdate'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.minbarometerage'><i class="fa fa-spinner fa-spin"></i></td>

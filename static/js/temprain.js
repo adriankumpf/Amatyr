@@ -169,6 +169,7 @@ var temprain = function(el, data, width, height) {
 
     // Temp line
     var line = d3.svg.line()
+        .defined(function (d) { return d.outtemp })
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.outtemp); })
         .interpolate(interpolation)
@@ -185,6 +186,7 @@ var temprain = function(el, data, width, height) {
     if (data[0].tempmin != undefined) {
         // Low Temp line
         var line = d3.svg.line()
+            .defined(function (d) { return d.tempmin })
             .x(function(d) { return x(d.date); })
             .y(function(d) { return y(d.tempmin); })
             .interpolate(interpolation)
@@ -198,6 +200,7 @@ var temprain = function(el, data, width, height) {
     if (data[0].tempmax != undefined) {
         // High Temp line
         var line = d3.svg.line()
+            .defined(function (d) { return d.tempmax })
             .x(function(d) { return x(d.date); })
             .y(function(d) { return y(d.tempmax); })
             .interpolate(interpolation)
@@ -218,6 +221,7 @@ var temprain = function(el, data, width, height) {
     y.domain([950, 1050]);
     // Pressure line
     var line = d3.svg.line()
+        .defined(function (d) { return d.barometer })
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.barometer); })
         .interpolate(interpolation)
@@ -408,4 +412,3 @@ var temprain = function(el, data, width, height) {
     }
     return this;
 }
-

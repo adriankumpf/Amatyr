@@ -100,7 +100,7 @@ var draw = function(source) {
     drawlines('#winddir', source, 'winddir','Wind direction (°)', width, height);
     //drawlines('#humidity', source, 'outhumidity','Humidity (%)', width, height);
     */
-    var vals = ['dewpoint1', 'dewpoint2', 'dewpoint3', 'dewpoint4', 'extratemp1', 'extratemp2', 'extratemp3', 'extratemp4', 'rooftemp', 'windspeed', 'windgust', 'outhumidity', 'winddir', 'rain', 'barometer', 'inhumidity', 'intemp', 'outtemp', 'dewpoint', 'heatindex', 'windchill'];
+    var vals = ['dewpoint1', 'dewpoint2', 'dewpoint3', 'dewpoint4', 'dewpoint', 'extratemp1', 'extratemp2', 'extratemp3', 'extratemp4', 'intemp', 'outtemp', 'rooftemp', 'windspeed', 'windgust', 'winddir', 'outhumidity', 'inhumidity', 'rain', 'barometer',   'heatindex', 'windchill'];
     d3.select('#graphtabs ul.nav-tabs').selectAll('li')
         .data(vals)
       .enter().append('li')
@@ -112,7 +112,77 @@ var draw = function(source) {
         }
         )
         .html(function(d, i) {
-            return '<a data-toggle="tab" href="#tab_graph_'+d+'">'+d.charAt(0).toUpperCase() + d.substr(1).toLowerCase()+'</a>'
+            var val;
+            switch (d) {
+                case 'dewpoint1':
+                    val = 'TP HWR';
+                    break;
+                case 'dewpoint2':
+                    val = 'TP Gästezimmer';
+                    break;
+                case 'dewpoint3':
+                    val = 'TP Vorratsraum';
+                    break;
+                case 'dewpoint4':
+                    val = 'TP Sportraum';
+                    break;
+                case 'dewpoint':
+                    val = 'TP Außen';
+                    break;
+                case 'extratemp1':
+                    val = 'T HWR';
+                    break;
+                case 'extratemp2':
+                    val = 'T Gästezimmer';
+                    break;
+                case 'extratemp3':
+                    val = 'T Vorratsraum';
+                    break;
+                case 'extratemp4':
+                    val = 'T Sportraum';
+                    break;
+                case 'rooftemp':
+                    val = 'T Dach';
+                    break;
+                case 'windspeed':
+                    val = 'Windgeschwindigkeit';
+                    break;
+                case 'windgust':
+                    val = 'Windböengeschwindigkeit';
+                    break;
+                case 'winddir':
+                    val = 'Windböengeschwindigkeit';
+                    break;
+                case 'outhumidity':
+                    val = 'Luftfeuchtigkeit Außen';
+                    break;
+                case 'rain':
+                    val = 'Regen';
+                    break;
+                case 'barometer':
+                    val = 'Luftdruck';
+                    break;
+                case 'inhumidity':
+                    val = 'Luftfeuchtigkeit Innen';
+                    break;
+                case 'intemp':
+                    val = 'T Azi';
+                    break;
+                case 'outtemp':
+                    val = 'T Außen';
+                    break;
+                case 'heatindex':
+                    val = 'Hitzeindex';
+                    break;
+                case 'windchill':
+                    val = 'Windkälte';
+                    break;
+                default:
+                    val = d.charAt(0).toUpperCase() + d.substr(1).toLowerCase();
+                    break;
+            }
+
+            return '<a data-toggle="tab" href="#tab_graph_'+d+'">' + val + '</a>'
         });
     d3.select('#graphtabs .tab-content').selectAll('div')
         .data(vals)

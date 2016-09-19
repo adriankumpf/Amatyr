@@ -41,8 +41,8 @@ var AmatYr = function(apiurl) {
             // Get all the wind history and draw two wind roses
             d3.json('/api/windhist?start='+startarg, function(data) {
                 this.windroseData = data;
-                windrose.drawBigWindrose(data, "#windrose", "Frequency by Direction");
-                windrose.drawBigWindrose(data, "#windroseavg", "Average Speed by Direction");
+                windrose.drawBigWindrose(data, "#windrose", "Häufigkeit");
+                windrose.drawBigWindrose(data, "#windroseavg", "Durchschnittliche Windgeschwindigkeit");
             });
         }else{ // update existing with new data
             d3.json('/api/windhist?start='+startarg, function(data) {
