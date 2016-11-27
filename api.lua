@@ -264,10 +264,11 @@ function year(match)
         MAX(dateTime) < (UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 24 HOUR))) AS needsupdate
         FROM days
     ]])
+
     if needsupdate == ngx.null or needsupdate[1] == nil or needsupdate.error ~= nil then
         needsupdate = true
     else
-        if needsupdate[1]['needsupdate'] == 't' then
+        if needsupdate[1]['needsupdate'] == '1' then
             needsupdate = true
         else
             needsupdate = false
