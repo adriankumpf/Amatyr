@@ -106,12 +106,12 @@
         <div class="col-md-12" id="record_weather">
           <h3>Archiv <small>Maximal- und Minimalwerte</small></h3>
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_today" data-toggle="tab">Heute</a></li>
-            <li class=""><a href="#tab_yesterday" data-toggle="tab">Gestern</a></li>
-            <li class=""><a href="#tab_week" data-toggle="tab">Woche</a></li>
-            <li class=""><a href="#tab_month" data-toggle="tab">Monat</a></li>
-            <li class=""><a href="#r2013" data-toggle="tab">Jahr</a></li>
-            <li class=""><a href="#rall" data-toggle="tab">Gesamt</a></li>
+            <li class="active"><a href="#tab_today" data-col="today" data-toggle="tab">Heute</a></li>
+            <li class=""><a href="#tab_yesterday" data-col="Yesterday" data-toggle="tab">Gestern</a></li>
+            <li class=""><a href="#tab_week" data-col="Week" data-toggle="tab">Woche</a></li>
+            <li class=""><a href="#tab_month" data-col="Month" data-toggle="tab">Monat</a></li>
+            <li class=""><a href="#r2013" data-col="Year" data-toggle="tab">Jahr</a></li>
+            <li class=""><a href="#rall" data-col="All" data-toggle="tab">Gesamt</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_today"></div>
@@ -200,10 +200,10 @@
   <script id="record_table_template" type="text/html">
     <table class="table">
       <tr>
-        <th>Data</th>
-        <th>What</th>
-        <th>When</th>
-        <th>Age</th>
+        <th></th>
+        <th>Wert</th>
+        <th>Datum</th>
+        <th>Alter</th>
       </tr>
       <tr>
         <td>Höchstemperatur</td>
@@ -218,7 +218,7 @@
         <td data-text='current.minouttempage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
       <tr>
-        <td>Höchste Windkälte</td>
+        <td>Niedrigste Windkälte</td>
         <td data-text='current.minwindchillvalue | temp'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.minwindchilldate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.minwindchillage'><i class="fa fa-spinner fa fa-spin"></i></td>

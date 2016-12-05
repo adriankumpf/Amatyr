@@ -208,7 +208,7 @@ var AmatYr = function(apiurl) {
         var tab = $($(this).attr('href'));
 
         // Get the year clicked
-        var year = $(this).text();
+        var year = $(this).attr('data-col');
         // Fetch new data from db
         updateRecordsYear(year);
 
