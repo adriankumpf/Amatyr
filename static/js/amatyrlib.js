@@ -342,7 +342,7 @@ var amatyrlib = function() {
     this.autoformat = function(name, value) {
         if (name == undefined || value == undefined) return value;
         var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
-        if (name == 'datetime') {
+        if (name == 'datetime' || name === 'date') {
             var date = new Date(value * 1000);
             return d3.time.format('%b')(date) + ' ' + date.getDate().pad(2);
         }
@@ -353,7 +353,7 @@ var amatyrlib = function() {
             }
             return val;
         }
-        if (name == 'outtemp') {
+        if (name == 'outtemp' || name.indexOf('dewpoint') !== -1) {
             var val = Number((value).toFixed(1));
             var color;
             if (val < 0) {

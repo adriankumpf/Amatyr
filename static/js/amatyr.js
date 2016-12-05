@@ -262,13 +262,14 @@ var AmatYr = function(apiurl) {
 
         // Add d3 js date for each datum
         data.forEach(function(d) {
-            d.jsdate = (new Date(d.datetime * 1000));
+            d.jsdate = (new Date(parseInt(d.date, 10) * 1000));
         });
 
         // Group data by month
         var monthdata = d3.nest()
           .key(function(d) { return d.jsdate.getMonth(); })
           .map(data);
+
 
         var aggdata =  d3.nest()
           .key(function(d) { return d.jsdate.getMonth(); })
@@ -278,15 +279,25 @@ var AmatYr = function(apiurl) {
                 windspeed: d3.mean(d, function(g) { return +g.windspeed }),
                 windgustmax: d3.max(d, function(g) { return +g.windgust}),
                 outtemp: d3.mean(d, function(g) { return +g.outtemp }),
-                tempmax: d3.max(d, function(g) { return +g.tempmax }),
-                tempmin: d3.min(d, function(g) { return +g.tempmin }),
+                tempmax: d3.max(d, function(g) { return +g.outtemp }),
+                tempmin: d3.min(d, function(g) { return +g.outtemp }),
+                dewpoint: d3.mean(d, function(g) { return +g.dewpoint }),
+                dewpoint1: d3.mean(d, function(g) { return +g.dewpoint1 }),
+                dewpoint2: d3.mean(d, function(g) { return +g.dewpoint2 }),
+                dewpoint3: d3.mean(d, function(g) { return +g.dewpoint3 }),
+                dewpoint4: d3.mean(d, function(g) { return +g.dewpoint4 }),
+                extratemp: d3.mean(d, function(g) { return +g.extratemp }),
+                extratemp1: d3.mean(d, function(g) { return +g.extratemp1 }),
+                extratemp2: d3.mean(d, function(g) { return +g.extratemp2 }),
+                extratemp3: d3.mean(d, function(g) { return +g.extratemp3 }),
+                extratemp4: d3.mean(d, function(g) { return +g.extratemp4 }),
                 dayrain: d3.sum(d, function(g) { return +g.dayrain }),
-                date: d3.min(d, function(g) { return +g.jsdate })
+                date: d3.min(d, function(g) { return +g.jsdate }),
             }
           })
           .entries(data)
 
-        var columns = ['datetime', 'dayrain', 'outtemp', 'windspeed', 'winddir'];
+        var columns = ['date', 'dayrain', 'outtemp', 'dewpoint', 'windspeed', 'winddir'];
         // Create a collapsible group for each month
         aggdata.forEach(function (agg, i) {
             //console.log(agg, agg.values, agg.values.outtemp);
@@ -294,29 +305,22 @@ var AmatYr = function(apiurl) {
                 values = agg.values,
                 monthname = d3.time.format('%Y %B')(new Date(values.date)),
                 header = monthname,
-                headertext =
-                    ' Rain: <span class="blue">' + amatyrlib.autoformat('dayrain', values.dayrain) + '</span>' +
-                    ' Avg Temp: ' + amatyrlib.autoformat('outtemp', values.outtemp) +
-                    ' Min Temp: ' + amatyrlib.autoformat('outtemp', values.tempmin) +
-                    ' Max Temp: ' + amatyrlib.autoformat('outtemp', values.tempmax) +
-                    ' Avg Wind: ' + amatyrlib.autoformat('windspeed', values.windspeed) +
-                    ' Max Windgust: ' + amatyrlib.autoformat('windspeed', values.windgustmax)
-                ,
-                panel = d3.select('#accordion').append('div')
-                .classed('panel', true),
-            heading = panel.append('div')
-                .classed('panel-heading', true),
-            h4 = heading.append('h4')
-                .html('<a data-toggle="collapse" data-parent="#accordion" href="#collapse-'+i+'">'+header+'</a><small>'+headertext+'</small>'),
-            collapse = panel.append('div')
-                .attr('id', 'collapse-'+i)
-                .classed('panel-collapse collapse', true),
-            body = collapse.append('div')
-                .classed('panel-body', true),
-            table = body.append('table')
-                .classed('table table-condensed', true),
-            thead = table.append("thead"),
-            tbody = table.append("tbody");
+                headertext = [
+                    'Regen: <span class="blue">' + amatyrlib.autoformat('dayrain', values.dayrain) + '</span>',
+                    'Temp: ' + amatyrlib.autoformat('outtemp', values.outtemp),
+                    'Temp (Keller): ' + amatyrlib.autoformat('outtemp', (values.extratemp1 + values.extratemp2 + values.extratemp3 + values.extratemp4) / 4),
+                    'Taup: ' + amatyrlib.autoformat('outtemp', values.dewpoint),
+                    'Taup (Keller): ' + amatyrlib.autoformat('outtemp', (values.dewpoint1 + values.dewpoint2 + values.dewpoint3 + values.dewpoint4) / 4),
+                    'Wind: ' + amatyrlib.autoformat('windspeed', values.windspeed),
+                    'Max Wind: ' + amatyrlib.autoformat('windspeed', values.windgustmax),
+                ].join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'),
+                panel = d3.select('#accordion').append('div') .classed('panel', true),
+                heading = panel.append('div') .classed('panel-heading', true),
+                h4 = heading.append('h4') .html('<a data-toggle="collapse" data-parent="#accordion" href="#collapse-'+i+'">'+header+'</a><small>'+headertext+'</small>'),
+                collapse = panel.append('div') .attr('id', 'collapse-'+i) .classed('panel-collapse collapse', true),
+                body = collapse.append('div') .classed('panel-body', true),
+                table = body.append('table') .classed('table table-condensed', true),
+                thead = table.append("thead"), tbody = table.append("tbody");
 
 
             // append the header row
@@ -340,7 +344,7 @@ var AmatYr = function(apiurl) {
                         return {column: column, value: row[column]};
                     });
                 })
-            .enter()
+                .enter()
                 .append("td")
                 .attr("style", "font-family: monospace")
                 .html(function(d) { return amatyrlib.autoformat(d.column, d.value); });
