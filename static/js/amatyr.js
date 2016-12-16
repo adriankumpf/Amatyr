@@ -250,7 +250,7 @@ var AmatYr = function(apiurl) {
             end : new Date(year, 11),
             range : range,
             weekStartOnMonday: true,
-            legend: [0.125, 0.25, 0.5, 1]    // Custom threshold for the scale
+            legend: [1, 4, 6, 8]    // Custom threshold for the scale
         });
     }
 
@@ -358,7 +358,7 @@ var AmatYr = function(apiurl) {
             // Add d3 js date for each datum
             json.forEach(function(d) {
                 d.date = ""+(+parseDate(d.datetime))/1000;
-
+                d.dayrain = d.dayrain * 10;
             });
 
             updateTabularData(json);

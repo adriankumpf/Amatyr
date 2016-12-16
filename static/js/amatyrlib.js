@@ -82,8 +82,7 @@ var draw = function(source) {
             d.datetime = String(new Date(d.datetime * 1000));
         }
         d.date = parseDate(d.datetime);
-        d.windspeed = d.windspeed;
-        d.windgust = d.windgust;
+        d.dayrain = d.dayrain * 10;
     });
     var width = $('#main').css('width').split('px')[0];
     var height = width/4;
@@ -317,7 +316,12 @@ var amatyrlib = function() {
             var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
             var date = parseDate(date);
         }
-        return date.getHours().pad(2) + ':' + date.getMinutes().pad(2);
+
+        var day = date.getDate();
+        var month = date.getMonth();
+        var year = date.getFullYear();
+
+        return day + '.' + month + '.' + year + ' ' + date.getHours().pad(2) + ':' + date.getMinutes().pad(2);
     }
 
     /* Configure Rivets to work with Watch JS */

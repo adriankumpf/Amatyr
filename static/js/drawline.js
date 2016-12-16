@@ -15,7 +15,6 @@ var drawlines = function(el, json, attr, yaxisleg, width, height) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    console.log('yo')
     // Add gradient to chart
     var gradient = amatyrlib.addGradient(svg, width, height);
 
@@ -96,7 +95,6 @@ var drawlines = function(el, json, attr, yaxisleg, width, height) {
         .attr("stroke", "darkred")
         .attr("d", line)
         .on("mouseover", function(d, i) {
-            console.log('in');
             var pos = $(this).offset();
             $('#tooltip').text(d.x + ': ' + d.y)
                 .css({
