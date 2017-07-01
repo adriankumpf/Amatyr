@@ -23,9 +23,9 @@ var AmatYr = function(apiurl) {
 
     // Fetch current weather
     d3.json(apiurl + 'now', function(json) {
-        current_weather = {
-            current: json[0]
-        };
+        current = json[0]
+        current.dayrain = current.dayrain * 10;
+        current_weather = { current: current };
         rivets.bind(document.getElementById('current_weather'), current_weather);
     });
 
@@ -175,6 +175,8 @@ var AmatYr = function(apiurl) {
                 // like min daily_rain or min windspeed
                 d3.json(apiurl + 'record/'+k+'/'+func+'?start='+year, function(json) {
                     if (json) {
+                        console.log(func, json[0])
+                        json[0].dayrain = json[0].dayrain * 10
                         record_weather.current[func+k+'date'] = json[0].datetime;
                         record_weather.current[func+k+'value'] = json[0][k];
                         record_weather.current[func+k+'age'] = json[0].age;
@@ -186,6 +188,7 @@ var AmatYr = function(apiurl) {
         var k = 'rain',
             func = 'sum';
         d3.json(apiurl + 'record/'+k+'/'+func+'?start='+year, function(json) {
+            json[0].rain = json[0].rain * 10
             record_weather.current[func+k+'value'] = json[0][k];
         });
     }

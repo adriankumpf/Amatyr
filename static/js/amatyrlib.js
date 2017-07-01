@@ -84,7 +84,7 @@ var draw = function(source) {
         d.date = parseDate(d.datetime);
         d.dayrain = d.dayrain * 10;
     });
-    var width = $('#main').css('width').split('px')[0];
+    var width = $('#main').css('width').split('px')[0] * 0.98;
     var height = width/4;
 
     /* Line graphs */
@@ -95,9 +95,9 @@ var draw = function(source) {
     drawlines('#pressure', source, 'barometer','Air pressure (hPa)', width, height);
     drawlines('#wind', source, 'windspeed', 'Wind speed m/s', width, height);
     /* Disable rain graph as it is part of temp graph now
-    drawlines('#rain', source, 'rain','Daily rain (mm)', width, height);
     drawlines('#winddir', source, 'winddir','Wind direction (°)', width, height);
     //drawlines('#humidity', source, 'outhumidity','Humidity (%)', width, height);
+    drawlines('#rain', source, 'rain','Daily rain (mm)', width, height);
     */
     var vals = ['dewpoint1', 'dewpoint2', 'dewpoint3', 'dewpoint4', 'dewpoint', 'extratemp1', 'extratemp2', 'extratemp3', 'extratemp4', 'intemp', 'outtemp', 'rooftemp', 'windspeed', 'windgust', 'winddir', 'outhumidity', 'inhumidity', 'rain', 'barometer',   'heatindex', 'windchill'];
     d3.select('#graphtabs ul.nav-tabs').selectAll('li')

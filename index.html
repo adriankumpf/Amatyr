@@ -77,20 +77,6 @@
           <div class="col-md-6" id="windrose"></div>
           <div class="col-md-6" id="windroseavg"></div>
         </div>
-        <div class="row-fluid">
-          <!--
-          <h5>Pressure </h5>
-          <div class="svgholder" id="pressure"><i class="icon-spin icon-spinner"></i>Loading data...</div>
-          <h5>Wind speed by time<span class="pull-right" data-text='current.windspeed | wind'></span></h5>
-          <div class="svgholder wind" id="wind"><i class="icon-spin icon-spinner"></i>Loading data...</div>
-          <h5>Rain <span class="pull-right" data-text='current.rain | rain'></span></h5>
-          <div class="svgholder" id="rain"><i class="icon-spin icon-spinner"></i>Loading data...</div>
-          <h5>Wind direction by time<span class="pull-right" data-text='current.winddir | degree '></span></h5>
-          <div class="svgholder winddir" id="winddir"><i class="icon-spin icon-spinner"></i>Loading data...</div>
-          <h5>Humidity by time<span class="pull-right" data-text='current.outhumidity | percent '></span></h5>
-          <div class="svgholder humidity" id="humidity"><i class="icon-spin icon-spinner"></i>Loading data...</div>
-          -->
-        </div>
         <div id="graphtabs" class="row-fluid">
           <ul class="nav nav-tabs">
           </ul>
@@ -111,7 +97,7 @@
             <li class=""><a href="#tab_week" data-col="Week" data-toggle="tab">Woche</a></li>
             <li class=""><a href="#tab_month" data-col="Month" data-toggle="tab">Monat</a></li>
             <li class=""><a href="#r2013" data-col="Year" data-toggle="tab">Jahr</a></li>
-            <li class=""><a href="#rall" data-col="All" data-toggle="tab">Gesamt</a></li>
+            <!-- <li class=""><a href="#rall" data-col="All" data-toggle="tab">Gesamt</a></li> -->
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_today"></div>
@@ -241,18 +227,12 @@
         <td data-text='current.maxwindgustdate'><i class="fa fa-spinner fa fa-spin"></i></td>
         <td data-text='current.maxwindgustage'><i class="fa fa-spinner fa fa-spin"></i></td>
       </tr>
-      <tr>
-        <td>Regenmenge</td>
-        <td data-text='current.sumrainvalue | rain'><i class="fa fa-spinner fa fa-spin"></i></td>
-        <td data-text='current.sumraindate'><i class="fa fa-spinner fa-spin"></i></td>
-        <td data-text='current.sumrainage'><i class="fa fa-spinner fa-spin"></i></td>
-      </tr>
-      <tr>
-        <td>Höchste Regenmenge pro Tag</td>
-        <td data-text='current.maxdayrainvalue | rain'><i class="fa fa-spinner fa-spin"></i></td>
-        <td data-text='current.maxdayraindate'><i class="fa fa-spinner fa-spin"></i></td>
-        <td data-text='current.maxdayrainage'><i class="fa fa-spinner fa-spin"></i></td>
-      </tr>
+      <!-- <tr> -->
+      <!--   <td>Höchste Regenmenge pro Tag</td> -->
+      <!--   <td data-text='current.maxdayrainvalue | rain'><i class="fa fa-spinner fa-spin"></i></td> -->
+      <!--   <td data-text='current.maxdayraindate'><i class="fa fa-spinner fa-spin"></i></td> -->
+      <!--   <td data-text='current.maxdayrainage'><i class="fa fa-spinner fa-spin"></i></td> -->
+      <!-- </tr> -->
       <tr>
         <td>Höchtser Luftdruck</td>
         <td data-text='current.maxbarometervalue | pressure'><i class="fa fa-spinner fa-spin"></i></td>
@@ -264,6 +244,12 @@
         <td data-text='current.minbarometervalue | pressure'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.minbarometerdate'><i class="fa fa-spinner fa-spin"></i></td>
         <td data-text='current.minbarometerage'><i class="fa fa-spinner fa-spin"></i></td>
+      </tr>
+      <tr>
+        <td>Regenmenge (Summe)</td>
+        <td data-text='current.sumrainvalue | rain'><i class="fa fa-spinner fa fa-spin"></i></td>
+        <td data-text='current.sumraindate'><i class="fa fa-spinner fa-spin"></i></td>
+        <td data-text='current.sumrainage'><i class="fa fa-spinner fa-spin"></i></td>
       </tr>
     </table>
   </script>
